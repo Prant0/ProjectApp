@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "398828152968",
+    "firebase_url": "https://neww-c669b.firebaseio.com",
+    "project_id": "neww-c669b",
+    "storage_bucket": "neww-c669b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:398828152968:android:e3671fc89d20126cbbd73d",
+        "android_client_info": {
+          "package_name": "com.prantoo.socialapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "398828152968-6flgeiuc83b552a8v4d49b2laf23p0el.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.prantoo.socialapp",
+            "certificate_hash": "9ebcb4c1b4017b25901537f747b308917ca4514a"
+          }
+        },
+        {
+          "client_id": "398828152968-2t0ufpve14j907o3teg60v99gqbb1cub.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC1wWCvtzLUWsNEWNW1JmJ0EJUE6e8TZ5g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "398828152968-2t0ufpve14j907o3teg60v99gqbb1cub.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
