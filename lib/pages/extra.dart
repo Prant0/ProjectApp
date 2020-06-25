@@ -111,7 +111,7 @@ class _ExtraState extends State<Extra> {
                           borderRadius: BorderRadius.circular(45.0)
                         ),
                         width: MediaQuery.of(context).size.width - 1.0,
-                        height: 180.0,
+                        height: 150.0,
                         child: Container(
                           padding: EdgeInsets.only(top: 8.0, bottom: 8.0),
                           child: Material(
@@ -119,7 +119,7 @@ class _ExtraState extends State<Extra> {
                             borderRadius: BorderRadius.circular(20.0),
                             borderOnForeground: true,
                             color: Colors.white,
-                            elevation: 14.0,
+                            elevation: 7.0,
                             shadowColor: Color(0x802196F3),
                             child: Center(
                                   child: Container(
@@ -155,34 +155,34 @@ class _ExtraState extends State<Extra> {
                                       height: 15.0,
                                     ),
                                     Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                      crossAxisAlignment: CrossAxisAlignment.center,
                                       children: <Widget>[
 
                                         Text(
-                                          'Time :${post.data['time']}',
+
+
+                                             'Room No :  ${post.data['roomNo']}',
                                           style: TextStyle(
                                               color: Colors.black,
                                               fontSize: 16.0),
                                         ),
+
+                                        SizedBox(
+                                          width: 50.0,
+                                        ),
+
+                                        Text(
+                                        'Time :${post.data['time']}',
+                                          style: TextStyle(
+                                            color: Colors.black,
+                                            fontSize: 18.0,
+                                          ),
+                                        ),
                                       ],
                                     ),
-                                    SizedBox(
-                                      height: 10.0,
-                                    ),
+
                                     Container(
-
-                                      child: Text(
-                                        'Room No :  ${post.data['roomNo']}',
-                                        style: TextStyle(
-                                          color: Colors.black,
-                                          fontSize: 18.0,
-                                        ),
-                                      ),
-                                    ),
-
-                                    Align(
-                                      alignment: Alignment.bottomRight,
-                                      //heightFactor: 30.0,
 
                                       child: IconButton(
                                         onPressed: () async{
@@ -192,14 +192,16 @@ class _ExtraState extends State<Extra> {
                                           });
 
                                         },
-                                          icon: Icon(
-                                            Icons.delete,
-                                            color: Colors.redAccent,
-                                            size: 35,
-                                          ),
-                                         // onPressed: () async {}
+                                        icon: Icon(
+                                          Icons.delete,
+                                          color: Colors.red,
+                                          size: 35,
                                         ),
+                                        // onPressed: () async {}
+                                      ),
                                     ),
+
+
                                   ],
                                 ),
                               ),
@@ -249,7 +251,7 @@ class _ExtraState extends State<Extra> {
           home: DefaultTabController(
             length: 7,
             child: Scaffold(
-              backgroundColor:Theme.of(context).primaryColor,
+            //  backgroundColor:Theme.of(context).primaryColor,
               appBar: AppBar(
                 leading: null,
                   centerTitle: true,
@@ -261,9 +263,7 @@ class _ExtraState extends State<Extra> {
                     color: Colors.orangeAccent,
                   ),
                   tabs: <Widget>[
-                    Tab(
-                      text: "Sat",
-                    ),
+
                     Tab(
                       text: "Sun",
                     ),
@@ -282,6 +282,9 @@ class _ExtraState extends State<Extra> {
                     Tab(
                       text: "Fri",
                     ),
+                    Tab(
+                      text: "Sat",
+                    ),
                     // Tab(text: "Thu",),
                   ],
                 ),
@@ -289,62 +292,7 @@ class _ExtraState extends State<Extra> {
               //drawer: Navigation(),
               body: TabBarView(
                 children: <Widget>[
-                  Container(
-                   // margin: EdgeInsets.only(bottom: 16.0),
-                    decoration: kMessageContainerDecoration,
-                    child: Column(
-                      children: <Widget>[
-                          Container(
-                              height: MediaQuery.of(context).size.height * .71,
-                              decoration: kMessageContainerDecoration,
-                              child: Column(
-                                children: <Widget>[
-                                  Container(
-                                    decoration:BoxDecoration(
-                                     // color: Colors.black,
-                                      borderRadius: BorderRadius.circular(10.0),
-                                    ),
-                                    height: MediaQuery.of(context).size.height * .6,
-                                    child: StreamBuilder(
-                                      stream: postsRef
-                                          .document(widget.profileId)
-                                          .collection('routineDetails')
-                                          .document('routine').collection('Saturday')
-                                          .snapshots(),
-                                      builder: _getPost,
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(right: 30.0),
-                                    child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.end,
-                                      crossAxisAlignment: CrossAxisAlignment.end,
-                                      children: <Widget>[
-                                        RaisedButton(
-                                          color:Colors.orange,
-                                          elevation: 10.0,
-                                          shape: RoundedRectangleBorder(
-                                            borderRadius: BorderRadius.circular(28.0),
-                                          ),
-                                          //saturday
-                                          child: Text('ADD',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),),
-                                          onPressed: () {
-                                            Navigator.push(context, MaterialPageRoute(builder: (context) => Input(
-                                              day: "Saturday",
-                                            )));
-                                          },
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              )
-                          ),
 
-
-                      ],
-                    ),
-                  ),
                   Container(
                       height: MediaQuery.of(context).size.height * .70,
                     decoration: kMessageContainerDecoration,
@@ -386,7 +334,7 @@ class _ExtraState extends State<Extra> {
                         ),
                       ],
                     )
-                  ),
+                  ),    //sunday
                   Container(
                       height: MediaQuery.of(context).size.height * .71,
                     decoration: kMessageContainerDecoration,
@@ -428,7 +376,7 @@ class _ExtraState extends State<Extra> {
                         ),
                       ],
                     )
-                  ),
+                  ),    //monday
                   Container(
                       height: MediaQuery.of(context).size.height * .71,
                     decoration: kMessageContainerDecoration,
@@ -470,7 +418,7 @@ class _ExtraState extends State<Extra> {
                         ),
                       ],
                     )
-                  ),
+                  ),   //tuesday
                   Container(
                       height: MediaQuery.of(context).size.height * .71,
                     decoration: kMessageContainerDecoration,
@@ -512,7 +460,7 @@ class _ExtraState extends State<Extra> {
                         ),
                       ],
                     )
-                  ),
+                  ),//wednesday
                   Container(
                       height: MediaQuery.of(context).size.height * .71,
                     decoration: kMessageContainerDecoration,
@@ -554,7 +502,7 @@ class _ExtraState extends State<Extra> {
                         ),
                       ],
                     )
-                  ),
+                  ),//thusday
                   Container(
                       height: MediaQuery.of(context).size.height * .71,
                     decoration: kMessageContainerDecoration,
@@ -596,7 +544,64 @@ class _ExtraState extends State<Extra> {
                         ),
                       ],
                     )
-                  ),
+                  ),//friday
+
+                  Container(
+                    // margin: EdgeInsets.only(bottom: 16.0),
+                    decoration: kMessageContainerDecoration,
+                    child: Column(
+                      children: <Widget>[
+                        Container(
+                            height: MediaQuery.of(context).size.height * .71,
+                            decoration: kMessageContainerDecoration,
+                            child: Column(
+                              children: <Widget>[
+                                Container(
+                                  decoration:BoxDecoration(
+                                    // color: Colors.black,
+                                    borderRadius: BorderRadius.circular(10.0),
+                                  ),
+                                  height: MediaQuery.of(context).size.height * .6,
+                                  child: StreamBuilder(
+                                    stream: postsRef
+                                        .document(widget.profileId)
+                                        .collection('routineDetails')
+                                        .document('routine').collection('Saturday')
+                                        .snapshots(),
+                                    builder: _getPost,
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(right: 30.0),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    crossAxisAlignment: CrossAxisAlignment.end,
+                                    children: <Widget>[
+                                      RaisedButton(
+                                        color:Colors.orange,
+                                        elevation: 10.0,
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.circular(28.0),
+                                        ),
+                                        //saturday
+                                        child: Text('ADD',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),),
+                                        onPressed: () {
+                                          Navigator.push(context, MaterialPageRoute(builder: (context) => Input(
+                                            day: "Saturday",
+                                          )));
+                                        },
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            )
+                        ),
+
+
+                      ],
+                    ),
+                  ),  //sat
                 ],
               ),
             ),

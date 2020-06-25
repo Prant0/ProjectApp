@@ -29,15 +29,7 @@ class _InputState extends State<Input> {
 
   String picked, courseName, roomNo;
 
-  TimeOfDay _timeOfDay;
 
-      getTimee()async{
-        TimeOfDay time= await showTimePicker(
-          context: context, initialTime: TimeOfDay.now());
-        setState(() {
-          _timeOfDay=time;
-        });
-      }
 //  String postId = Uuid().v4();
 
   getCourseName(courseName) {
@@ -48,8 +40,8 @@ class _InputState extends State<Input> {
     this.roomNo = roomNo;
   }
 
-  getTime(time) {
-    this.picked = time;
+  getTime(picked) {
+    this.time = picked;
   }
 
   createData() {
@@ -87,17 +79,17 @@ class _InputState extends State<Input> {
     }
   }
 
-  TimeOfDay _time = TimeOfDay.now();
+  TimeOfDay time = TimeOfDay.now();
 
-  Future<Null> selectTime(BuildContext context) async {
-    final TimeOfDay picked = await showTimePicker(
+  Future<Null> _selectTime(BuildContext context) async {
+   final TimeOfDay picked = await showTimePicker(
       context: context,
-      initialTime: _time,
+      initialTime: time,
     );
-    if (picked != null && picked == _time) {
-      print('Time: ${_time.toString()}');
+    if (picked != null && picked != time) {
+      print('Time: ${time.toString()}');
       setState(() {
-        _time = picked;
+        time = picked;
       });
     }
   }
@@ -163,15 +155,16 @@ class _InputState extends State<Input> {
                   ),
                   child: Column(
                     children: <Widget>[
-                      Text('Time: ${_time.toString()}'),
+                      Text('Time: ${time.toString()}'),
                       SizedBox(
                         height: 10.0,
                       ),
                       RaisedButton(
+
                         child: Text('Select Time'),
                         onPressed: () {
-                          selectTime(context);
-                          //getTimee();
+                         _selectTime(context);
+
                         },
                       ),
                     ],
@@ -203,40 +196,6 @@ class _InputState extends State<Input> {
               ),
             ],
           ),
-        ),
-      ),
-    );
-  }
-}
-
-class Tuesday extends StatelessWidget {
-  Tuesday({this.courseName, this.time,this.roomNo});
-
-  final String courseName;
-  final String time;
-  final String roomNo;
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.all(10.0),
-      child: Container(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: <Widget>[
-            Material(
-              color: Colors.lightBlueAccent,
-              borderRadius: BorderRadius.circular(30.0),
-              child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 20.0),
-                child: Text(
-                  '$courseName',
-                  style: TextStyle(color: Colors.white, fontSize: 15.0),
-                ),
-              ),
-            ),
-            Text(time),
-          ],
         ),
       ),
     );
