@@ -173,7 +173,7 @@ class _ExtraState extends State<Extra> {
                                         ),
 
                                         Text(
-                                        'Time :${post.data['time']}',
+                                        'Time ${post.data['time']}',
                                           style: TextStyle(
                                             color: Colors.black,
                                             fontSize: 18.0,
@@ -294,54 +294,64 @@ class _ExtraState extends State<Extra> {
                 children: <Widget>[
 
                   Container(
-                      height: MediaQuery.of(context).size.height * .70,
-                    decoration: kMessageContainerDecoration,
-                    child: Column(
-                      children: <Widget>[
-                        Container(
-                          height: MediaQuery.of(context).size.height * .6,
-                          child: StreamBuilder(
-                            stream: postsRef
-                                .document(widget.profileId)
-                                .collection('routineDetails')
-                                .document('routine').collection('Sunday')
-                                .snapshots(),
-                            builder: _getPost,
+                      height: MediaQuery.of(context).size.height,
+                      decoration: kMessageContainerDecoration,
+                      child: Stack(
+                        children: <Widget>[
+                          SingleChildScrollView(
+                            child: StreamBuilder(
+                              stream: postsRef
+                                  .document(widget.profileId)
+                                  .collection('routineDetails')
+                                  .document('routine').collection('Sunday')
+                                  .snapshots(),
+                              builder: _getPost,
+                            ),
                           ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(right: 20.0),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            crossAxisAlignment: CrossAxisAlignment.end,
-                            children: <Widget>[
-                              RaisedButton(
-                                color:Colors.orange,
-                                elevation: 10.0,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(28.0),
-                                ),
-                                //saturday
-                                child: Text('ADD',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),),
-                                onPressed: () {
-                                  Navigator.push(context, MaterialPageRoute(builder: (context) => Input(
-                                    day: "Sunday",
-                                  )));
-                                },
+                          Positioned(
+                            bottom: 15,
+                            right: 15,
+                            child: Padding(
+                              padding: const EdgeInsets.only(right: 20.0),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                crossAxisAlignment: CrossAxisAlignment.end,
+                                children: <Widget>[
+                                  RaisedButton(
+                                    color:Colors.orange,
+                                    elevation: 10.0,
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(28.0),
+                                    ),
+                                    //saturday
+                                    child: Text('ADD',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),),
+                                    onPressed: () {
+                                      Navigator.push(context, MaterialPageRoute(builder: (context) => Input(
+                                        day: "Sunday",
+                                      )));
+                                    },
+                                  ),
+                                ],
                               ),
-                            ],
+                            ),
                           ),
-                        ),
-                      ],
-                    )
-                  ),    //sunday
+                        ],
+                      )
+                  ),
+
+                  //sunday
+
+
+
+
+
+
                   Container(
-                      height: MediaQuery.of(context).size.height * .71,
+                      height: MediaQuery.of(context).size.height,
                     decoration: kMessageContainerDecoration,
-                    child: Column(
+                    child: Stack(
                       children: <Widget>[
-                        Container(
-                          height: MediaQuery.of(context).size.height * .6,
+                        SingleChildScrollView(
                           child: StreamBuilder(
                             stream: postsRef
                                 .document(widget.profileId)
@@ -351,257 +361,294 @@ class _ExtraState extends State<Extra> {
                             builder: _getPost,
                           ),
                         ),
-                        Padding(
-                          padding: const EdgeInsets.only(right: 20.0),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            crossAxisAlignment: CrossAxisAlignment.end,
-                            children: <Widget>[
-                              RaisedButton(
-                                color:Colors.orange,
-                                elevation: 10.0,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(28.0),
-                                ),
-                                //saturday
-                                child: Text('ADD',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),),
-                                onPressed: () {
-                                  Navigator.push(context, MaterialPageRoute(builder: (context) => Input(
-                                    day: "Monday",
-                                  )));
-                                },
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    )
-                  ),    //monday
-                  Container(
-                      height: MediaQuery.of(context).size.height * .71,
-                    decoration: kMessageContainerDecoration,
-                    child: Column(
-                      children: <Widget>[
-                        Container(
-                          height: MediaQuery.of(context).size.height * .6,
-                          child: StreamBuilder(
-                            stream: postsRef
-                                .document(widget.profileId)
-                                .collection('routineDetails')
-                                .document('routine').collection('Tuesday')
-                                .snapshots(),
-                            builder: _getPost,
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(right: 20.0),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            crossAxisAlignment: CrossAxisAlignment.end,
-                            children: <Widget>[
-                              RaisedButton(
-                                color:Colors.orange,
-                                elevation: 10.0,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(28.0),
-                                ),
-                                //saturday
-                                child: Text('ADD',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),),
-                                onPressed: () {
-                                  Navigator.push(context, MaterialPageRoute(builder: (context) => Input(
-                                    day: "Tuesday",
-                                  )));
-                                },
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    )
-                  ),   //tuesday
-                  Container(
-                      height: MediaQuery.of(context).size.height * .71,
-                    decoration: kMessageContainerDecoration,
-                    child: Column(
-                      children: <Widget>[
-                        Container(
-                          height: MediaQuery.of(context).size.height * .6,
-                          child: StreamBuilder(
-                            stream: postsRef
-                                .document(widget.profileId)
-                                .collection('routineDetails')
-                                .document('routine').collection('Wednesday')
-                                .snapshots(),
-                            builder: _getPost,
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(right: 20.0),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            crossAxisAlignment: CrossAxisAlignment.end,
-                            children: <Widget>[
-                              RaisedButton(
-                                color:Colors.orange,
-                                elevation: 10.0,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(28.0),
-                                ),
-                                //saturday
-                                child: Text('ADD',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),),
-                                onPressed: () {
-                                  Navigator.push(context, MaterialPageRoute(builder: (context) => Input(
-                                    day: "Wednesday",
-                                  )));
-                                },
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    )
-                  ),//wednesday
-                  Container(
-                      height: MediaQuery.of(context).size.height * .71,
-                    decoration: kMessageContainerDecoration,
-                    child: Column(
-                      children: <Widget>[
-                        Container(
-                          height: MediaQuery.of(context).size.height * .6,
-                          child: StreamBuilder(
-                            stream: postsRef
-                                .document(widget.profileId)
-                                .collection('routineDetails')
-                                .document('routine').collection('Thursday')
-                                .snapshots(),
-                            builder: _getPost,
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(right: 20.0),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            crossAxisAlignment: CrossAxisAlignment.end,
-                            children: <Widget>[
-                              RaisedButton(
-                                color:Colors.orange,
-                                elevation: 10.0,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(28.0),
-                                ),
-                                //saturday
-                                child: Text('ADD',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),),
-                                onPressed: () {
-                                  Navigator.push(context, MaterialPageRoute(builder: (context) => Input(
-                                    day: "Thursday",
-                                  )));
-                                },
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    )
-                  ),//thusday
-                  Container(
-                      height: MediaQuery.of(context).size.height * .71,
-                    decoration: kMessageContainerDecoration,
-                    child: Column(
-                      children: <Widget>[
-                        Container(
-                          height: MediaQuery.of(context).size.height * .6,
-                          child: StreamBuilder(
-                            stream: postsRef
-                                .document(widget.profileId)
-                                .collection('routineDetails')
-                                .document('routine').collection('Friday')
-                                .snapshots(),
-                            builder: _getPost,
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(right: 20.0),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            crossAxisAlignment: CrossAxisAlignment.end,
-                            children: <Widget>[
-                              RaisedButton(
-                                color:Colors.orange,
-                                elevation: 10.0,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(28.0),
-                                ),
-                                //saturday
-                                child: Text('ADD',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),),
-                                onPressed: () {
-                                  Navigator.push(context, MaterialPageRoute(builder: (context) => Input(
-                                    day: "Friday",
-                                  )));
-                                },
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    )
-                  ),//friday
-
-                  Container(
-                    // margin: EdgeInsets.only(bottom: 16.0),
-                    decoration: kMessageContainerDecoration,
-                    child: Column(
-                      children: <Widget>[
-                        Container(
-                            height: MediaQuery.of(context).size.height * .71,
-                            decoration: kMessageContainerDecoration,
-                            child: Column(
+                        Positioned(
+                          bottom: 15,
+                          right: 15,
+                          child: Padding(
+                            padding: const EdgeInsets.only(right: 20.0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              crossAxisAlignment: CrossAxisAlignment.end,
                               children: <Widget>[
-                                Container(
-                                  decoration:BoxDecoration(
-                                    // color: Colors.black,
-                                    borderRadius: BorderRadius.circular(10.0),
+                                RaisedButton(
+                                  color:Colors.orange,
+                                  elevation: 10.0,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(28.0),
                                   ),
-                                  height: MediaQuery.of(context).size.height * .6,
-                                  child: StreamBuilder(
-                                    stream: postsRef
-                                        .document(widget.profileId)
-                                        .collection('routineDetails')
-                                        .document('routine').collection('Saturday')
-                                        .snapshots(),
-                                    builder: _getPost,
-                                  ),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.only(right: 30.0),
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.end,
-                                    crossAxisAlignment: CrossAxisAlignment.end,
-                                    children: <Widget>[
-                                      RaisedButton(
-                                        color:Colors.orange,
-                                        elevation: 10.0,
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.circular(28.0),
-                                        ),
-                                        //saturday
-                                        child: Text('ADD',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),),
-                                        onPressed: () {
-                                          Navigator.push(context, MaterialPageRoute(builder: (context) => Input(
-                                            day: "Saturday",
-                                          )));
-                                        },
-                                      ),
-                                    ],
-                                  ),
+                                  //saturday
+                                  child: Text('ADD',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),),
+                                  onPressed: () {
+                                    Navigator.push(context, MaterialPageRoute(builder: (context) => Input(
+                                      day: "Monday",
+                                    )));
+                                  },
                                 ),
                               ],
-                            )
+                            ),
+                          ),
                         ),
-
-
                       ],
-                    ),
-                  ),  //sat
+                    )
+                  ),
+
+
+                  //monday
+
+
+
+
+
+
+
+                  Container(
+                      height: MediaQuery.of(context).size.height,
+                      decoration: kMessageContainerDecoration,
+                      child: Stack(
+                        children: <Widget>[
+                          SingleChildScrollView(
+                            child: StreamBuilder(
+                              stream: postsRef
+                                  .document(widget.profileId)
+                                  .collection('routineDetails')
+                                  .document('routine').collection('Tuesday')
+                                  .snapshots(),
+                              builder: _getPost,
+                            ),
+                          ),
+                          Positioned(
+                            bottom: 15,
+                            right: 15,
+                            child: Padding(
+                              padding: const EdgeInsets.only(right: 20.0),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                crossAxisAlignment: CrossAxisAlignment.end,
+                                children: <Widget>[
+                                  RaisedButton(
+                                    color:Colors.orange,
+                                    elevation: 10.0,
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(28.0),
+                                    ),
+                                    //saturday
+                                    child: Text('ADD',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),),
+                                    onPressed: () {
+                                      Navigator.push(context, MaterialPageRoute(builder: (context) => Input(
+                                        day: "Tuesday",
+                                      )));
+                                    },
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ],
+                      )
+                  ),
+
+
+
+                  //tuesday
+
+
+
+
+
+                  Container(
+                      height: MediaQuery.of(context).size.height,
+                      decoration: kMessageContainerDecoration,
+                      child: Stack(
+                        children: <Widget>[
+                          SingleChildScrollView(
+                            child: StreamBuilder(
+                              stream: postsRef
+                                  .document(widget.profileId)
+                                  .collection('routineDetails')
+                                  .document('routine').collection('Wednesday')
+                                  .snapshots(),
+                              builder: _getPost,
+                            ),
+                          ),
+                          Positioned(
+                            bottom: 15,
+                            right: 15,
+                            child: Padding(
+                              padding: const EdgeInsets.only(right: 20.0),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                crossAxisAlignment: CrossAxisAlignment.end,
+                                children: <Widget>[
+                                  RaisedButton(
+                                    color:Colors.orange,
+                                    elevation: 10.0,
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(28.0),
+                                    ),
+                                    //saturday
+                                    child: Text('ADD',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),),
+                                    onPressed: () {
+                                      Navigator.push(context, MaterialPageRoute(builder: (context) => Input(
+                                        day: "Wednesday",
+                                      )));
+                                    },
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ],
+                      )
+                  ),
+
+                  //wednesday
+
+
+
+
+                  Container(
+                      height: MediaQuery.of(context).size.height,
+                      decoration: kMessageContainerDecoration,
+                      child: Stack(
+                        children: <Widget>[
+                          SingleChildScrollView(
+                            child: StreamBuilder(
+                              stream: postsRef
+                                  .document(widget.profileId)
+                                  .collection('routineDetails')
+                                  .document('routine').collection('Thursday')
+                                  .snapshots(),
+                              builder: _getPost,
+                            ),
+                          ),
+                          Positioned(
+                            bottom: 15,
+                            right: 15,
+                            child: Padding(
+                              padding: const EdgeInsets.only(right: 20.0),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                crossAxisAlignment: CrossAxisAlignment.end,
+                                children: <Widget>[
+                                  RaisedButton(
+                                    color:Colors.orange,
+                                    elevation: 10.0,
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(28.0),
+                                    ),
+                                    //saturday
+                                    child: Text('ADD',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),),
+                                    onPressed: () {
+                                      Navigator.push(context, MaterialPageRoute(builder: (context) => Input(
+                                        day: "Thursday",
+                                      )));
+                                    },
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ],
+                      )
+                  ),
+
+
+                  //thursday
+
+
+
+
+                  Container(
+                      height: MediaQuery.of(context).size.height,
+                      decoration: kMessageContainerDecoration,
+                      child: Stack(
+                        children: <Widget>[
+                          SingleChildScrollView(
+                            child: StreamBuilder(
+                              stream: postsRef
+                                  .document(widget.profileId)
+                                  .collection('routineDetails')
+                                  .document('routine').collection('Friday')
+                                  .snapshots(),
+                              builder: _getPost,
+                            ),
+                          ),
+                          Positioned(
+                            bottom: 15,
+                            right: 15,
+                            child: Padding(
+                              padding: const EdgeInsets.only(right: 20.0),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                crossAxisAlignment: CrossAxisAlignment.end,
+                                children: <Widget>[
+                                  RaisedButton(
+                                    color:Colors.orange,
+                                    elevation: 10.0,
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(28.0),
+                                    ),
+                                    //saturday
+                                    child: Text('ADD',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),),
+                                    onPressed: () {
+                                      Navigator.push(context, MaterialPageRoute(builder: (context) => Input(
+                                        day: "Friday",
+                                      )));
+                                    },
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ],
+                      )
+                  ),  //friday
+
+                  Container(
+                      height: MediaQuery.of(context).size.height,
+                      decoration: kMessageContainerDecoration,
+                      child: Stack(
+                        children: <Widget>[
+                          SingleChildScrollView(
+                            child: StreamBuilder(
+                              stream: postsRef
+                                  .document(widget.profileId)
+                                  .collection('routineDetails')
+                                  .document('routine').collection('Saturday')
+                                  .snapshots(),
+                              builder: _getPost,
+                            ),
+                          ),
+                          Positioned(
+                            bottom: 15,
+                            right: 15,
+                            child: Padding(
+                              padding: const EdgeInsets.only(right: 20.0),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                crossAxisAlignment: CrossAxisAlignment.end,
+                                children: <Widget>[
+                                  RaisedButton(
+                                    color:Colors.orange,
+                                    elevation: 10.0,
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(28.0),
+                                    ),
+                                    //saturday
+                                    child: Text('ADD',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),),
+                                    onPressed: () {
+                                      Navigator.push(context, MaterialPageRoute(builder: (context) => Input(
+                                        day: "Saturday",
+                                      )));
+                                    },
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ],
+                      )
+                  ),   //sat
                 ],
               ),
             ),

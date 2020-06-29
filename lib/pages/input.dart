@@ -28,6 +28,8 @@ class _InputState extends State<Input> {
   FirebaseUser loggedInUser;
 
   String picked, courseName, roomNo;
+  TimeOfDay time = TimeOfDay.now();
+
 
 
 //  String postId = Uuid().v4();
@@ -54,7 +56,7 @@ class _InputState extends State<Input> {
 
       "courseName": courseName,
       'roomNo': roomNo,
-      "time": picked,
+      "time": "${time.hour}:${time.minute}",
     };
     ds.setData(routine).whenComplete(() {
       print('Routine Added');
@@ -79,7 +81,6 @@ class _InputState extends State<Input> {
     }
   }
 
-  TimeOfDay time = TimeOfDay.now();
 
   Future<Null> _selectTime(BuildContext context) async {
    final TimeOfDay picked = await showTimePicker(
@@ -87,7 +88,7 @@ class _InputState extends State<Input> {
       initialTime: time,
     );
     if (picked != null && picked != time) {
-      print('Time: ${time.toString()}');
+      print('Time: ${picked.toString()}');
       setState(() {
         time = picked;
       });
