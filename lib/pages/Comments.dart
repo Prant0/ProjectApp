@@ -90,7 +90,7 @@ class _CommentsState extends State<Comments> {
   Widget build(BuildContext context) {
 
     return Scaffold(
-      appBar: header(context,titleText: 'Comments,'),
+      appBar: header(context,titleText: 'Comments'),
       body: Column(
         children: <Widget>[
           Expanded(

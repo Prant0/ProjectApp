@@ -205,62 +205,69 @@ Navigator.push(context, MaterialPageRoute(builder: (context)=>EditProfile(curren
           return circularProgress();
         }
         User user = User.formDocument(snapshot.data);
-        return Padding(
-          padding: EdgeInsets.all(20.0),
-          child: Column(
-            children: <Widget>[
-              Row(
-                children: <Widget>[
-                  CircleAvatar(
-                    radius: 52.0,
-                    backgroundColor: Colors.grey,
-                    backgroundImage: CachedNetworkImageProvider(user.photoUrl),
-                  ),
-                  Expanded(
-                    flex: 1,
-                    child: Column(
-                      children: <Widget>[
-                        Row(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: <Widget>[
-                            buildPostColumn('posts',postCount),
-                            buildPostColumn('Followers',followersCount),
-                            buildPostColumn('Following',followingCount),
-                          ],
-                        ),
-                        Container(
-                          child: buildProfileButton(),
-                        ),
+        return Container(
+          decoration: BoxDecoration(
 
+           color: Color(0xffE7EBEB),
+          ),
+          child: Padding(
 
-                      ],
+            padding: EdgeInsets.all(20.0),
+            child: Column(
+              children: <Widget>[
+                Row(
+                  children: <Widget>[
+                    CircleAvatar(
+                      radius: 52.0,
+                      backgroundColor: Colors.grey,
+                      backgroundImage: CachedNetworkImageProvider(user.photoUrl),
                     ),
-                  )
-                ],
-              ),
-              
-              Container(
-                alignment: Alignment.centerLeft,
-                padding: EdgeInsets.only(top: 12.0),
-                child: Text(user.username !=null? user.username.toString():'null',
-                  style: TextStyle(color: Colors.deepOrangeAccent,fontSize: 30.0,fontWeight: FontWeight.w500),),
-              ),
+                    Expanded(
+                      flex: 1,
+                      child: Column(
+                        children: <Widget>[
+                          Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: <Widget>[
+                              buildPostColumn('posts',postCount),
+                              buildPostColumn('Followers',followersCount),
+                              buildPostColumn('Following',followingCount),
+                            ],
+                          ),
+                          Container(
+                            child: buildProfileButton(),
+                          ),
 
-              Container(
-                alignment: Alignment.centerLeft,
-                padding: EdgeInsets.only(top: 12.0),
-                child: Text(user.displayName !=null? user.displayName.toString():'null',
-                  style: TextStyle(fontSize: 18.0,fontWeight: FontWeight.bold),),
-              ),
 
-              Container(
-                alignment: Alignment.centerLeft,
-                padding: EdgeInsets.only(top: 12.0),
-                child: Text(user.bio !=null? user.bio.toString():'null',
-                  style: TextStyle(fontSize: 18.0,fontWeight: FontWeight.w400),),
-              ),
-            ],
+                        ],
+                      ),
+                    )
+                  ],
+                ),
+
+                Container(
+                  alignment: Alignment.centerLeft,
+                  padding: EdgeInsets.only(top: 12.0),
+                  child: Text(user.username !=null? user.username.toString():'null',
+                    style: TextStyle(color: Colors.deepOrangeAccent,fontSize: 30.0,fontWeight: FontWeight.w500),),
+                ),
+
+                Container(
+                  alignment: Alignment.centerLeft,
+                  padding: EdgeInsets.only(top: 12.0),
+                  child: Text(user.displayName !=null? user.displayName.toString():'null',
+                    style: TextStyle(fontSize: 18.0,fontWeight: FontWeight.bold),),
+                ),
+
+                Container(
+                  alignment: Alignment.centerLeft,
+                  padding: EdgeInsets.only(top: 12.0),
+                  child: Text(user.bio !=null? user.bio.toString():'null',
+                    style: TextStyle(fontSize: 18.0,fontWeight: FontWeight.w400),),
+                ),
+              ],
+            ),
           ),
         );
       },
@@ -270,18 +277,22 @@ Navigator.push(context, MaterialPageRoute(builder: (context)=>EditProfile(curren
     if(isLoading){
       circularProgress();
     }
-    return Column(
-      children: posts,
+    return Container(
+     // color: Color(0xFFB4ECE5),
+      child: Column(
+        children: posts,
+      ),
     );
   }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xFFB4ECE5),
       appBar: header(context, titleText: "Profile"),
       body: ListView(
         children: <Widget>[
           buildProfileHeader(),
-          Divider(height: 0.5,),
+          Divider(height: 2.0,color: Colors.black,),
 
           buildProfilePost(),
         ],

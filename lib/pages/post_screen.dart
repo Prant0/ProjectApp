@@ -99,10 +99,11 @@ class _PostState extends State<Post> {
 
         bool ispostOwner = currentUserId == ownerId;
         return Container(
-              margin: EdgeInsets.only(top: 30.0,right: 10.0, left: 10.0),
+              margin: EdgeInsets.only(top: 10.0,right: 10.0, left: 10.0),
           padding: EdgeInsets.symmetric(vertical: 5.0),
           decoration: BoxDecoration(
-            border: Border.all(width: 1.0,color: Colors.blueGrey),
+            color: Colors.teal,
+            border: Border.all(width: 1.0,color: Colors.black54),
             borderRadius: BorderRadius.circular(5.0)
           ),
           child: ListTile(
@@ -194,6 +195,11 @@ class _PostState extends State<Post> {
 
   buildPostFooter(){
     return Container(
+      decoration: BoxDecoration(
+        //border: Border.all(color: Colors.blueGrey,width: 1.0),
+
+
+      ),
       margin: EdgeInsets.symmetric(horizontal: 14.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -205,11 +211,12 @@ class _PostState extends State<Post> {
             children: <Widget>[
               Container(
                 margin: EdgeInsets.only(top: 15.0,bottom: 20.0),
-                child: Text(caption,style: TextStyle(fontSize:26.0 ,color: Colors.black,fontWeight: FontWeight.w500),),
+                child: Text(caption,style: TextStyle(fontSize:26.0 ,color: Colors.black87,fontWeight: FontWeight.w500),),
               ),
               //Expanded(child: Text(caption)),
             ],
           ),
+
 
 
           Row(
@@ -239,20 +246,22 @@ class _PostState extends State<Post> {
                   ownerId:ownerId,
                   caption:caption,
                 ),
-                child: Icon(Icons.chat_bubble,color: Colors.blueAccent,),
+                child: Icon(Icons.chat_bubble,color: Colors.blue,),
               ),
 
 
-              Divider(height: 1.0, color: Colors.red,thickness: 5,)
+              Divider(height: 2.0, color: Colors.red,thickness: 5,)
             ],
           ),
 
 
           Container(
 
-            margin: EdgeInsets.only(top: 5.0),
+            margin: EdgeInsets.only(bottom: 5.0),
             child: Text("$likesCount likes ",style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold),),
           ),
+
+
 
         ],
       ),
@@ -330,13 +339,32 @@ class _PostState extends State<Post> {
   @override
   Widget build(BuildContext context) {
     isLiked = (likes[currentUserId]==true);
-    return Column(
-      children: <Widget>[
-        buildPostHeader(),
-         //buildPostImage(),
-        buildPostFooter(),
-      ],
+    return Container(
+      margin: EdgeInsets.symmetric(horizontal: 6.0,vertical: 11.0),
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topRight,
+          end: Alignment.bottomLeft,
+          colors: [
+
+            Color(0xff86A8AC),
+            Color(0xffA5F0F7),
+          ],
+        ),
+        borderRadius: BorderRadius.circular(10.0),
+        border: Border.all(color: Colors.black,width: 1,style: BorderStyle.solid),
+      ),
+      child: Column(
+        children: <Widget>[
+          buildPostHeader(),
+           //buildPostImage(),
+          buildPostFooter(),
+
+        ],
+      ),
+
     );
+
   }
 }
 showComments(BuildContext context,

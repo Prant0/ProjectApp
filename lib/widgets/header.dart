@@ -4,7 +4,7 @@ AppBar header(context , {bool isAppTitle = false, String titleText}) {
   return AppBar(
     title: Text(
         isAppTitle ? 'Time Line' : titleText
-      ,style: TextStyle(fontSize: 30.0,
+      ,style: TextStyle(fontSize: 27.0,
     color: Colors.white, fontFamily: 'Acme-Regular'),
     overflow: TextOverflow.ellipsis,),
     centerTitle: true,

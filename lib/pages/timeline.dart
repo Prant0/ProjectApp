@@ -53,7 +53,7 @@ class _TimelineState extends State<Timeline> {
     } else if(posts.isEmpty){
       return builduserFollower();
     }
-    return ListView(children: posts);
+    return Container(child: ListView(children: posts,));
   }
 
   builduserFollower(){
@@ -115,6 +115,7 @@ class _TimelineState extends State<Timeline> {
   @override
   Widget build(context) {
     return Scaffold(
+     backgroundColor:   Color(0xFFD6D3D5),
       appBar: header(context , isAppTitle: true),
       body: RefreshIndicator(
         onRefresh: ()=>getTimeLine(),

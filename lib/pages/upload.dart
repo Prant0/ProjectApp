@@ -69,7 +69,7 @@ class _UploadState extends State<Upload> {
       appBar: AppBar(
         backgroundColor: Colors.teal,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back,color: Colors.blueGrey,size: 30.0,),
+          icon: Icon(Icons.arrow_back,color: Colors.white,size: 30.0,),
         ),
         title: Text('Upload Your  Post',style: TextStyle(
           color: Colors.white,fontSize: 30.0,fontFamily: "Acme-Regular"
